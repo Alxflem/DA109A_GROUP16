@@ -1,6 +1,19 @@
 import psycopg2
 
-class Manager:
+class DatabaseManager:
+    """
+    A class to manage database connections and operations in PostGreSQL.
+
+    Attributes:
+        dbname, user, password, host, port: Credentials for DB connection.
+        connection, cursor: Handles the DB connection and operations.
+
+    Methods:
+        connect(): Connects to the DB and creates a cursor.
+        disconnect(): Closes the DB connection and cursor.
+        get_product_by_name(name): Fetches a product by name from the DB.
+    """
+
     def __init__(self):
         self.dbname = "da109a_g16"
         self.user = "an7910"
@@ -12,6 +25,9 @@ class Manager:
         self.cursor = None
 
     def connect(self):
+        """
+        Establishes a connection to the PostGreSQL database and creates a cursor object.
+        """
         try:
             self.connection = psycopg2.connect(
                 dbname=self.dbname,
@@ -22,7 +38,6 @@ class Manager:
             )
             print("Connected to the database!")
 
-            # Create a cursor object to execute SQL queries
             self.cursor = self.connection.cursor()
 
         except Exception as e:
@@ -30,8 +45,43 @@ class Manager:
             print(e)
 
     def disconnect(self):
-        # Close the cursor and connection
+        """
+        Closes the cursor and the connection to the database.
+        """
+
         if self.connection:
             self.cursor.close()
             self.connection.close()
             print("Connection closed.")
+
+    def get_product_by_name(self, name):
+        
+        """
+        Fetches one product with a name similar to the provided name from the database.
+
+        Args:
+            name (str): The product name to search for.
+
+        Returns:
+            tuple: The first matching product, or None if no match is found.
+        """
+
+        if not self.connection:
+            self.connect()
+        
+        query = f"""SELECT * FROM product ORDER BY SIMILARITY(name, '{name}') DESC LIMIT 5;"""
+
+        try:
+            self.cursor.execute(query)
+
+            results = self.cursor.fetchone()
+
+            if not results:
+                print("No products found with similar names.")
+                return None
+
+            return results
+
+        except Exception as e:
+            print("Error: unable to fetch data")
+            print(e)
