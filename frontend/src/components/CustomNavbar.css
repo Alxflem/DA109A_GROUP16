@@ -1,0 +1,25 @@
+.navbar-collapse {
+    transform: 0.3s;
+    overflow: hidden;
+  }
+
+  .navbar-collapse.show {
+    height: 100%; /* Adjust the value based on your content height */
+}
+
+.navbar-brand{
+    padding-left: 10px;
+}
+
+navbar-toggler-icon {
+    background-color: black; /* Set button color to black */
+    border: 1px solid black; /* Set button border color to black */
+  }
+  
+  .navbar-toggler-icon::after {
+    background-color: black; /* Set the color of the icon lines to black */
+  }
+  
+  .navbar-nav .nav-link {
+    color: white !important; /* Set nav link text color to black */
+  }
