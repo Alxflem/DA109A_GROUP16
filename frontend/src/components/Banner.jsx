@@ -6,7 +6,7 @@ const Banner = () => {
     <div className="banner-container">
       <div className="banner-overlay">
         <div className="banner-text">
-          <h1>Sök bland tusentals recept</h1>
+          <h1>Search among thousands of recipes</h1>
         </div>
       </div>
     </div>
