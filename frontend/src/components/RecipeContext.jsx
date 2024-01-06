@@ -10,16 +10,7 @@ export const useRecipeContext = () => {
 
 //RecipiProvider is a wrapper component that will be used to wrap the components that need to access the context
 export const RecipeProvider = ({ children }) => { 
-  const [recipes, setRecipes] = useState([
-    {
-        name: 'Pasta',
-        ingredients: ['Pasta', 'Tomato Sauce', 'Cheese'],
-      },
-      {
-        name: 'Salad',
-        ingredients: ['Lettuce', 'Tomato', 'Cucumber'],
-      },
-  ]);
+  const [recipes, setRecipes] = useState([]);
 
   //It uses a combination of useState and createContext to create a context that can be used by other components
   //Wherever you need to access the context, you can use the useRecipeContext hook
