@@ -10,7 +10,7 @@ function SearchContainer() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className='d-flex justify-content-center align-items-center'>
+    <div className='d-flex justify-content-center align-items-center mt-5'>
       <div className="search-container">
         <input
           type="text"
@@ -19,7 +19,7 @@ function SearchContainer() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <br />
+        <br/>
         <button className="btn btn-dark" onClick={handleSearch}>
           Search
         </button>
