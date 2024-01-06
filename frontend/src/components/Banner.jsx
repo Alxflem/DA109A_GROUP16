@@ -1,6 +1,9 @@
 import React from 'react';
-import './Banner.css'; // Create a CSS file for custom styles
+import './Banner.css'; 
 
+// This component will be used to render the banner
+//It contains a background image and some text
+//Most of the styling is done in the Banner.css file
 const Banner = () => {
   return (
     <div className="banner-container">
