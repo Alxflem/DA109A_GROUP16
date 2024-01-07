@@ -11,20 +11,20 @@ const CustomNavbar = () => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-danger fixed-top ${isNavOpen ? 'show' : ''}`}>
-      <a className="navbar-brand" href="#home">Willys Recept</a>
+      <a className="navbar-brand" href="index.html">Willys Recept</a>
       <button className="navbar-toggler" type="button" onClick={toggleNav}>
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={`collapse navbar-collapse justify-content-end ${isNavOpen ? 'show' : ''}`}>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#home">Home</a>
+            <a className="nav-link" href="index.html">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#about">About</a>
+            <a className="nav-link" href="about.html">About</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#contact">Contact</a>
+            <a className="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>

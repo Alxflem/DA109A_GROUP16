@@ -1,3 +1,7 @@
-:root {
+/* contact-styles.css */
+.contact-box {
+    border: 1px solid rgb(141, 30, 30); /* Add your desired border styles */
+    padding: 10px; /* Add padding for spacing inside the box */
+    margin-top: 20px; /* Add margin for spacing around the box */
+  }
   
-}
