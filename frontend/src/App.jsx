@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchContainer from './components/SearchContainer';
@@ -14,6 +14,7 @@ function App() {
   const handleRecipeClick = (recipe) => {
     // Set the selected recipe when a recipe card is clicked
     setSelectedRecipe(recipe);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToGrid = () => {
@@ -21,6 +22,10 @@ function App() {
     setSelectedRecipe(null);
     addRecipe(null);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [selectedRecipe]);
 
   //This is the main component that will be rendered by the index.jsx file
   //It will be used to wrap all the other components

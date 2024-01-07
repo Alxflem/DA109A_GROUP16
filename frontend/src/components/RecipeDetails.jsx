@@ -7,7 +7,6 @@ const RecipeDetails = ({ recipe, onBackToGrid }) => {
         src={recipe.imageUrl}
         alt={recipe.name}
         className="img-fluid rounded-top mb-3"
-        style={{ marginTop: '80px' }}
       />
 
       <h1>{recipe.name}</h1>
