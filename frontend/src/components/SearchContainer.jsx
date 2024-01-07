@@ -1,27 +1,32 @@
 import { useState } from 'react';
-import RecipeGrid from './RecipeGrid';
 import { useRecipeContext } from './RecipeContext';
-import json from '../assets/response_data_filtered.json';
 
 function SearchContainer() { 
-  const { addRecipe, clearRecipes } = useRecipeContext();
-  const [loading, setLoading] = useState(false);
-  // This function will be called when the user clicks the search button
-  // It will fetch data from the API and add it to the recipe context
-  // The recipe context will then be used to render the recipes
-  //However, for now, it will just add some dummy data to the recipe context
+  const { addRecipe, clearRecipes } = useRecipeContext(); //This is a custom hook that will be used to access the recipe context
+  const [loading, setLoading] = useState(false); //This is a state variable that will be used to store the loading state of the search button
+  
+  // This function will be called when the search button is clicked
+  // It will fetch the data from the backend and add the recipes to the recipe context
+  // The recipe context is a global state that can be accessed by any component
   const handleSearch = async () => {
 
     if(searchTerm !== ''){
       clearRecipes();
-      console.log('Searching for:', searchTerm);
-    
+      let data = []
       try {
         setLoading(true);
-
-        await new Promise((resolve) => setTimeout(resolve, 2000)); //Simulate a delay of 2 seconds
-        
-        const data = json; //Dummy data fetched
+        try {
+          const response = await fetch(`http://127.0.0.1:5000/?query=${searchTerm}`);
+  
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+  
+          data = await response.json();
+          console.log(data);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
 
         // Extract label and ingredientLines for each recipe object in the json file
         data.forEach((object) => {
