@@ -69,7 +69,7 @@ class DatabaseManager:
         if not self.connection:
             self.connect()
         
-        query = f"""SELECT * FROM product ORDER BY SIMILARITY(name, '{name}') DESC LIMIT 5;"""
+        query = f"""SELECT * FROM product ORDER BY SIMILARITY(name, '{name}') DESC LIMIT 1;"""
 
         try:
             self.cursor.execute(query)
@@ -78,6 +78,37 @@ class DatabaseManager:
 
             if not results:
                 print("No products found with similar names.")
+                return None
+
+            return results
+
+        except Exception as e:
+            print("Error: unable to fetch data")
+            print(e)
+
+    def get_price_by_barcode(self, barcode):
+        """
+        Fetches the price of the product by barcode
+
+        Args:
+            barcode (str): The product barcode to search for.
+
+        Returns:
+            tuple: The compare price unit and compare price of the product
+        """
+
+        if not self.connection:
+            self.connect()
+        
+        query = f"""SELECT compare_price_unit, compare_price FROM willys_articles WHERE barcode = '{barcode}' LIMIT 1;"""
+
+        try:
+            self.cursor.execute(query)
+
+            results = self.cursor.fetchone()
+
+            if not results:
+                print("Barcode not found.")
                 return None
 
             return results
