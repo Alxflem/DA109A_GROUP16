@@ -16,7 +16,6 @@ async def getMeals(query):
         'q': query,
         'app_id': app_id,
         'app_key': app_key,
-        'Accept-Language': 'en',
     }
 
     # Make the GET request
@@ -38,8 +37,9 @@ async def getMeals(query):
                 'images': recipe.get('images'),
                 'ingredientLines': recipe.get('ingredientLines'),
                 'ingredients': recipe.get('ingredients'),
-                'instructionLines': recipe.get('instructionLines'),
+                'instructionLines': recipe.get('instructions'),
             }
+            print(recipe.get('instructionLines'))
             filtered_data.append(filtered_recipe)
 
         return filtered_data
