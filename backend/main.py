@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS  # Import CORS from flask_cors
 import asyncio
 from recipeRequest import getMeals
+from translate_text import translate_text
+from calculate_price import calculate_price
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes in the app
@@ -21,6 +23,16 @@ def get_data():
     try:
         # Run the asynchronous function and get the result
         filtered_data = asyncio.run(get_meals_async(query))
+
+        for data in filtered_data:
+            ingredients_separated = [(i['food'], i['weight']) for i in data["ingredients"] if 'food' in i and 'weight' in i]
+            
+            result = ','.join([item[0] for item in ingredients_separated])
+            result = translate_text(result, "sv").split(", ")
+
+            new_list = [(result[i], ingredients_separated[i][1]) for i in range(len(ingredients_separated))]
+
+            data["price"] = calculate_price(new_list)
 
         # Return the data as a JSON response
         return jsonify(filtered_data)

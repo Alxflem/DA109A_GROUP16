@@ -20,8 +20,7 @@ def calculate_price(ingredients):
     
     db_manager = DatabaseManager()
     
-    ingredients_separated = [(i['food'], i['weight']) for i in ingredients if 'food' in i and 'weight' in i]
-    price = sum(float(db_manager.get_price_by_barcode(db_manager.get_product_by_name(i[0])[0])[1]) * i[1] / 1000 for i in ingredients_separated)
+    price = sum(float(db_manager.get_price_by_barcode(db_manager.get_product_by_name(i[0])[0])[1]) * i[1] / 1000 for i in ingredients)
     
     db_manager.disconnect()
 
