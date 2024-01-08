@@ -25,14 +25,17 @@ def get_data():
         filtered_data = asyncio.run(get_meals_async(query))
 
         for data in filtered_data:
-            ingredients_separated = [(i['food'], i['weight']) for i in data["ingredients"] if 'food' in i and 'weight' in i]
-            
-            result = ','.join([item[0] for item in ingredients_separated])
-            result = translate_text(result, "sv").split(", ")
+            try:
+                ingredients_separated = [(i['food'], i['weight']) for i in data["ingredients"] if 'food' in i and 'weight' in i]
+                
+                result = ','.join([item[0] for item in ingredients_separated])
+                result = translate_text(result, "sv").split(", ")
 
-            new_list = [(result[i], ingredients_separated[i][1]) for i in range(len(ingredients_separated))]
+                new_list = [(result[i], ingredients_separated[i][1]) for i in range(len(ingredients_separated))]
 
-            data["price"] = calculate_price(new_list)
+                data["price"] = calculate_price(new_list)
+            except Exception as e:
+                print(f"An unexpected error occurred: {e}")
 
         # Return the data as a JSON response
         return jsonify(filtered_data)
