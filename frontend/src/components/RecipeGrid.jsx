@@ -19,6 +19,7 @@ function RecipeGrid({onRecipeClick}){
               ingredients={recipe.ingredients}
               imageUrl={recipe.imageUrl}
               onClick={() => handleClick(recipe)} 
+              price={recipe.price}
             />
           ))}
         </div>

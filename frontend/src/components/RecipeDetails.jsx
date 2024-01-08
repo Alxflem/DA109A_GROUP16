@@ -11,6 +11,7 @@ const RecipeDetails = ({ recipe, onBackToGrid }) => {
       />
 
       <h1>{recipe.name}</h1>
+      {recipe.price && <h3 className="text-muted">Price: {recipe.price} SEK</h3>}
       <h2 className="mb-4">Ingredients:</h2>
       <ul className="list-group list-group-flush text-left">
         {recipe.ingredients.map((ingredient, index) => (

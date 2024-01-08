@@ -3,9 +3,7 @@ import './Recipe.css';
 // This component will be used to render a single recipe
 // It will be used in the RecipeGrid component
 // It will receive the name, ingredients and imageUrl as props
-const Recipe = ({ name, ingredients, imageUrl, onClick }) => {
-
-
+const Recipe = ({ name, ingredients, imageUrl, price, onClick }) => {
   return (
     <div className="col-md-4 mb-4 recipe-card" onClick={onClick}>
       <div className="card h-100">
@@ -19,7 +17,7 @@ const Recipe = ({ name, ingredients, imageUrl, onClick }) => {
         )}
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
-          
+          {price && <p className="card-text">Price: {price} SEK</p>}
         </div>
       </div>
     </div>

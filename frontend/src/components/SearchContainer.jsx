@@ -33,7 +33,8 @@ function SearchContainer() {
           const label = object.label;
           const image = object.image;
           const ingredientLines = object.ingredientLines;
-          const newRecipe = { name: label, ingredients: ingredientLines, imageUrl: image }; //Create a new recipe object
+          const price = parseInt(object.price);
+          const newRecipe = { name: label, ingredients: ingredientLines, price: price, imageUrl: image }; //Create a new recipe object
 
           console.log(image);
           addRecipe(newRecipe);
