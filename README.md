@@ -6,22 +6,24 @@ Before getting started, ensure that you have Python and Node.js installed on you
 
 ## Project Download
 
-1. Download the project to your local machine.
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V1.zip
+
+2. extract the files from the downloaded zip file
 
 ## Backend Setup
 
-2. Open the terminal/command prompt.
-3. Navigate to the "DA109A_GROUP16" folder.
-4. Change directory to the backend folder:
+3. Open the terminal/command prompt on your computer
+4. Navigate to the "DA109A_GROUP16" folder where you extracted the zipped files
+5. Change directory to the backend folder:
 
     ```bash
     cd backend
     ```
 
-5. Install the required Python packages:
+6. Install the required Python packages:
 
     ```bash
-    pip install flask flask-cors requests psycopg2-binary
+    pip install flask flask-cors requests psycopg2
     ```
 
     If the above command doesn't work, you can try:
@@ -29,11 +31,14 @@ Before getting started, ensure that you have Python and Node.js installed on you
     ```bash
     pip3 install flask
     pip3 install flask-cors
-    pip3 install psycopg2-binary
+    pip3 install psycopg2
     pip3 install requests
     ```
 
-6. Go back to the main project folder:
+    If psycopg2 does not work run the commands as before but replace psycopg2 with                            
+    psycopg2-binary
+
+7. Go back to the main project folder:
 
     ```bash
     cd ..
@@ -41,13 +46,13 @@ Before getting started, ensure that you have Python and Node.js installed on you
 
 ## Frontend Setup
 
-7. Change directory to the frontend folder:
+8. Change directory to the frontend folder:
 
     ```bash
     cd frontend
     ```
 
-8. Install the required Node.js packages:
+9. Install the required Node.js packages:
 
     ```bash
     npm install
@@ -55,13 +60,13 @@ Before getting started, ensure that you have Python and Node.js installed on you
 
 ## Start Frontend
 
-9. Make sure you are in the frontend directory:
+10. Make sure you are in the frontend directory:
 
     ```bash
     cd frontend
     ```
 
-10. Run the following command to start the frontend:
+11. Run the following command to start the frontend:
 
     ```bash
     npm run dev
@@ -69,7 +74,9 @@ Before getting started, ensure that you have Python and Node.js installed on you
 
 ## Start Backend
 
-11. Make sure you are in the backend directory:
+12. Open a new terminal/command prompt and navigate to the project folder like in step 4
+
+13. Make sure you are in the backend directory:
 
     ```bash
     cd backend
@@ -87,7 +94,7 @@ Before getting started, ensure that you have Python and Node.js installed on you
     cd backend
     ```
 
-12. Run the following command to start the backend on port 5000:
+14. Run the following command to start the backend on port 5000:
 
     ```bash
     python main.py
