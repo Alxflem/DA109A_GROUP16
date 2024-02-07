@@ -12,7 +12,7 @@ const CustomNavbar = ({ change }) => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-danger fixed-top ${isNavOpen ? 'show' : ''}`}>
-      <a className="navbar-brand" href="#home">Willys Recept</a>
+      <a className="navbar-brand" href="#home">KAMEO Recipes</a>
       <button className="navbar-toggler" type="button" onClick={toggleNav}>
         <span className="navbar-toggler-icon"></span>
       </button>
