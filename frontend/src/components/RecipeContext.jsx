@@ -8,7 +8,7 @@ export const useRecipeContext = () => {
   return useContext(RecipeContext);
 };
 
-//RecipiProvider is a wrapper component that will be used to wrap the components that need to access the context
+//RecipeProvider is a wrapper component that will be used to wrap the components that need to access the context
 export const RecipeProvider = ({ children }) => { 
   const [recipes, setRecipes] = useState([]);
 
@@ -16,10 +16,12 @@ export const RecipeProvider = ({ children }) => {
   //Wherever you need to access the context, you can use the useRecipeContext hook
   const addRecipe = (recipe) => {
     if(recipe === null){
-      //If the recipe is null, update the list
+      //If the recipe is null, just update the list
       setRecipes((prevRecipes) => [...prevRecipes]);
     }
-    setRecipes((prevRecipes) => [...prevRecipes, recipe]);
+    else{ //If the recipe is not null, add the recipe to the list
+      setRecipes((prevRecipes) => [...prevRecipes, recipe]);
+    }
   };
   const clearRecipes = () => {
     setRecipes([]);

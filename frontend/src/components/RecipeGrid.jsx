@@ -1,12 +1,19 @@
 import Recipe from "./Recipe";
 import { useRecipeContext } from './RecipeContext';
+import { useEffect } from "react";
 
 function RecipeGrid({onRecipeClick}){
-    const {recipes} = useRecipeContext(); //This context is used to make communication between components easier   
+    const {recipes, addRecipe} = useRecipeContext(); //This context is used to make communication between components easier   
     const handleClick = (recipe) => {
-    // Call the onRecipeClick function with the selected recipe
-    onRecipeClick(recipe);
-  };
+      // Call the onRecipeClick function with the selected recipe
+      onRecipeClick(recipe);
+    };
+
+    //This useEffect hook will be called when the component is mounted
+    useEffect(() => {
+      addRecipe(null); //This will re-render the recipe grid when loaded.
+    },[]);
+
     //The list of recipes is mapped to a list of Recipe components
     //The list gets updated whenever the recipes state changes in the RecipeProvider wrapper
     return (

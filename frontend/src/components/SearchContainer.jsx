@@ -23,7 +23,6 @@ function SearchContainer() {
           }
   
           data = await response.json();
-          console.log(data);
         } catch (error) {
             console.error('Error:', error.message);
         }
@@ -36,7 +35,6 @@ function SearchContainer() {
           const price = parseInt(object.price);
           const newRecipe = { name: label, ingredients: ingredientLines, price: price, imageUrl: image }; //Create a new recipe object
 
-          console.log(image);
           addRecipe(newRecipe);
         });
       } catch (error) {
