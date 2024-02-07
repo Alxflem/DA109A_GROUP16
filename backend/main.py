@@ -4,6 +4,13 @@ import asyncio
 from recipeRequest import getMeals
 from translate_text import translate_text
 from calculate_price import calculate_price
+from willys import get_milk
+from data_manager import DatabaseManager
+
+db = DatabaseManager()
+milk_price = get_milk()
+db.insert_milk_price(milk_price)
+db.disconnect()
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes in the app

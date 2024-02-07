@@ -116,3 +116,12 @@ class DatabaseManager:
         except Exception as e:
             print("Error: unable to fetch data")
             print(e)
+
+    def insert_milk_price(self, price):
+        if not self.connection:
+            self.connect()
+
+        query = f"""UPDATE willys_articles set compare_price = {price} WHERE barcode = '7340083443893'"""
+
+        self.cursor.execute(query)
+        self.connection.commit()
