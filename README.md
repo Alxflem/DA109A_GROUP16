@@ -6,7 +6,7 @@ Before getting started, ensure that you have Python and Node.js installed on you
 
 ## Project Download
 
-1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V1.zip
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V2.zip
 
 2. extract the files from the downloaded zip file
 
