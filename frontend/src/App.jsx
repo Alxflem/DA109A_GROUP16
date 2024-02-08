@@ -37,10 +37,12 @@ function App() {
 
   const changeView  = (newView) => {
     if(newView === "About"){
+      setSelectedRecipe(null);
       setCurrentView(<About/>);
       return;
     }
     else if(newView === "Home"){
+      setSelectedRecipe(null);
       setCurrentView(mainPage);
       return;
     }
