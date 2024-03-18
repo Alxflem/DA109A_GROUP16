@@ -6,7 +6,7 @@ https://nodejs.org/en/download
 
 ## Project Download
 
-1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V3.zip
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V4.zip
 
 2. extract the files from the downloaded zip file
 
@@ -19,8 +19,8 @@ https://nodejs.org/en/download
 ```python -m venv <path>``` for winows
 ```python3 -m venv <path>``` for macOS
 and activate it with
-```.\venv\Scripts\activate``` for windows
-```source venv/bin/activate``` for macOS
+```.\<path>\Scripts\activate``` for windows
+```source <path>/bin/activate``` for macOS
 
 7. Install the required libraries with
 	```pip install -r requirements.txt```
