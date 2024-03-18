@@ -6,24 +6,24 @@ https://nodejs.org/en/download
 
 ## Project Download
 
-1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V2.zip
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V3.zip
 
 2. extract the files from the downloaded zip file
 
 ## Backend Setup
 
 Create a python virtual environment with
-´´´python -m venv venv´´´
+```python -m venv venv```
 and activate it with
-´´´.\venv\Scripts\activate´´´ for windows
-´´´source venv/bin/activate´´´ for macOS
+```.\venv\Scripts\activate``` for windows
+```source venv/bin/activate``` for macOS
 
 3. Open the terminal/command prompt on your computer
 4. Navigate to the "DA109A_GROUP16" folder where you extracted the zipped files
 5. Change directory to the backend folder: cd backend
 6. Create a python virtual environment with
 	
-´´´python -m venv venv´´´
+```python -m venv venv```
 
 and activate it with
 
@@ -31,7 +31,7 @@ and activate it with
 “source venv/bin/activate” for macOS
 
 7. Install the required libraries with
-	´´´pip install -r requirements.txt´´´
+	```pip install -r requirements.txt```
 
 8. Go back to the main project folder: cd ..
 
