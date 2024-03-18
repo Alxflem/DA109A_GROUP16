@@ -12,23 +12,15 @@ https://nodejs.org/en/download
 
 ## Backend Setup
 
-Create a python virtual environment with
-```python -m venv venv```
-and activate it with
-```.\venv\Scripts\activate``` for windows
-```source venv/bin/activate``` for macOS
-
 3. Open the terminal/command prompt on your computer
 4. Navigate to the "DA109A_GROUP16" folder where you extracted the zipped files
 5. Change directory to the backend folder: cd backend
 6. Create a python virtual environment with
-	
-```python -m venv venv```
-
+```python -m venv <path>``` for winows
+```python3 -m venv <path>``` for macOS
 and activate it with
-
-“.\venv\Scripts\activate” for windows
-“source venv/bin/activate” for macOS
+```.\venv\Scripts\activate``` for windows
+```source venv/bin/activate``` for macOS
 
 7. Install the required libraries with
 	```pip install -r requirements.txt```
