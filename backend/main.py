@@ -4,13 +4,25 @@ import asyncio
 from recipeRequest import getMeals
 from translate_text import translate_text
 from calculate_price import calculate_price
-from willys import get_milk
+from willys import Willys
 from data_manager import DatabaseManager
+import argparse
 
 db = DatabaseManager()
-milk_price = get_milk()
-db.insert_milk_price(milk_price)
-db.disconnect()
+
+def update_willys():
+    print("Updating willys prices")
+    willys = Willys()
+    prods = willys.get_all_products(1000)
+
+    articles = []
+    for prod in prods:
+        price = willys.get_compare_price(prod)
+        article_id = willys.get_product_code(prod)
+        articles.append({'compare_price': price, 'article_id': article_id})
+
+    db.bulk_insert_product_price(articles)
+    db.disconnect()
 
 app = Flask(__name__)
 CORS(app)
@@ -77,4 +89,11 @@ def calculate_price_route():
         return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u', '--update', action='store_true', help='Run the update code')
+    args = parser.parse_args()
+
+    if args.update:
+        update_willys()
+
     app.run(debug=True)
