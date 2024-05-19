@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS  # Import CORS from flask_cors
+from flask_cors import CORS 
 import asyncio
 from recipeRequest import getMeals
 from translate_text import translate_text
@@ -62,21 +62,22 @@ def calculate_price_for_recipe(recipe_data):
         # Om prisberäkning misslyckas, returnera 0 eller något annat defaultvärde
         return 0
 
-@app.route('/v1/prices', methods=['POST'])
+@app.route('/v1/prices', methods=['GET'])
 def calculate_price_route():
     try:
-        # Manuell validering av indata
-        ingredients = request.json
-        if not isinstance(ingredients, list):
-            raise ValueError("Ingredients must be a list")
-        for item in ingredients:
-            if not isinstance(item, dict) or 'name' not in item or 'weight' not in item:
-                raise ValueError("Invalid ingredient format")
-            if not isinstance(item['name'], str) or not isinstance(item['weight'], (int, float)):
-                raise ValueError("Invalid ingredient data types")
+        # Hämta ingredienser från query-parametrar
+        ingredients = request.args.getlist('ingredients')
 
-         # Anpassning för calculate_price funktionen
-        formatted_ingredients = [(item['name'], item['weight']) for item in ingredients]  # Skapa tupler
+        if not ingredients:
+            raise ValueError("Ingredients are required")
+        formatted_ingredients = []
+        for ingredient_str in ingredients:
+            try:
+                name, weight_str = ingredient_str.split(',')
+                weight = float(weight_str)
+                formatted_ingredients.append((name, weight))
+            except ValueError:
+                raise ValueError("Invalid ingredient format (should be 'name,weight')")
 
         # Beräkna priset
         price = calculate_price(formatted_ingredients)
@@ -87,6 +88,7 @@ def calculate_price_route():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'error': 'Internal server error'}), 500
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
