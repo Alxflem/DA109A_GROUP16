@@ -6,7 +6,7 @@ https://nodejs.org/en/download
 
 ## Project Download
 
-1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V6.zip
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V7.zip
 
 2. extract the files from the downloaded zip file
 
