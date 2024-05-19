@@ -6,7 +6,7 @@ https://nodejs.org/en/download
 
 ## Project Download
 
-1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V5.zip
+1. Download the project from: https://github.com/Alxflem/DA109A_GROUP16/archive/refs/tags/V6.zip
 
 2. extract the files from the downloaded zip file
 
@@ -50,5 +50,8 @@ and activate it with
     Then, navigate to the backend directory: cd backend
 
 15. Run the following command to start the backend or by pressing the start button in an IDE with main.py as the chosen file: python main.py
+
+(16.) To update prices as well run "python main.py -u" instead
+
 
 Now, your project should be up and running. Access the frontend at http://localhost:5173 and the backend at http://localhost:5000
