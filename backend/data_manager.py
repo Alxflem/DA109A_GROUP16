@@ -117,11 +117,20 @@ class DatabaseManager:
             print("Error: unable to fetch data")
             print(e)
 
-    def insert_milk_price(self, price):
+    def bulk_insert_product_price(self, articles):
         if not self.connection:
             self.connect()
 
-        query = f"""UPDATE willys_articles set compare_price = {price} WHERE barcode = '7340083443893'"""
+        query = """
+        UPDATE willys_articles
+        SET compare_price = %s
+        FROM product
+        WHERE product.barcode = willys_articles.barcode
+        AND product.article_id = %s
+        """
 
-        self.cursor.execute(query)
+        # Prepare a list of tuples where each tuple contains compare_price and article_id
+        data = [(article['compare_price'], article['article_id']) for article in articles]
+
+        self.cursor.executemany(query, data)
         self.connection.commit()
