@@ -1,30 +1,31 @@
-import { useState } from 'react';
-import { useRecipeContext } from './RecipeContext';
+import { useState } from "react";
+import { useRecipeContext } from "./RecipeContext";
 
-function SearchContainer() { 
+function SearchContainer() {
   const { addRecipe, clearRecipes } = useRecipeContext(); //This is a custom hook that will be used to access the recipe context
   const [loading, setLoading] = useState(false); //This is a state variable that will be used to store the loading state of the search button
-  
+
   // This function will be called when the search button is clicked
   // It will fetch the data from the backend and add the recipes to the recipe context
   // The recipe context is a global state that can be accessed by any component
   const handleSearch = async () => {
-
-    if(searchTerm !== ''){
+    if (searchTerm !== "") {
       clearRecipes();
-      let data = []
+      let data = [];
       try {
         setLoading(true);
         try {
-          const response = await fetch(`http://127.0.0.1:5000/?query=${searchTerm}`);
-  
+          const response = await fetch(
+            `http://127.0.0.1:5000/v1/recipes?query=${searchTerm}`
+          );
+
           if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
           }
-  
+
           data = await response.json();
         } catch (error) {
-            console.error('Error:', error.message);
+          console.error("Error:", error.message);
         }
 
         // Extract label and ingredientLines for each recipe object in the json file
@@ -33,24 +34,28 @@ function SearchContainer() {
           const image = object.image;
           const ingredientLines = object.ingredientLines;
           const price = parseInt(object.price);
-          const newRecipe = { name: label, ingredients: ingredientLines, price: price, imageUrl: image }; //Create a new recipe object
+          const newRecipe = {
+            name: label,
+            ingredients: ingredientLines,
+            price: price,
+            imageUrl: image,
+          }; //Create a new recipe object
 
           addRecipe(newRecipe);
         });
       } catch (error) {
-        console.error('Error fetching or parsing data:', error);
-      }
-      finally{
+        console.error("Error fetching or parsing data:", error);
+      } finally {
         setLoading(false);
       }
     }
   };
 
   // This state variable will be used to store the search term
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className='d-flex justify-content-center align-items-center mt-5 mb-5'>
+    <div className="d-flex justify-content-center align-items-center mt-5 mb-5">
       <div className="search-container">
         <input
           type="text"
@@ -59,15 +64,23 @@ function SearchContainer() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <br/>
-        <button className="btn btn-dark" onClick={handleSearch} disabled={loading}>
+        <br />
+        <button
+          className="btn btn-dark"
+          onClick={handleSearch}
+          disabled={loading}
+        >
           {loading ? ( //This is a ternary operator, it is used to conditionally render a spinning circle when loading
             <>
-              <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
               <span className="visually-hidden">Loading...</span>
             </>
           ) : (
-            'Search'
+            "Search"
           )}
         </button>
       </div>
